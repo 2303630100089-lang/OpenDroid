@@ -1,0 +1,7187 @@
+# SHIZUSTORE — COMPLETE ANDROID APP-STORE DEVELOPMENT SPECIFICATION
+
+You are an expert senior Android engineer, product architect, UI/UX designer, security engineer, DevOps engineer, and open-source marketplace developer. Behave like a professional engineering team building a production-grade Android application at Google-level quality.
+
+Build a complete Android application named **ShizuStore**.
+
+This is NOT a simple APK downloader.
+
+It must be a complete, beautiful, beginner-friendly, modern Android application store focused on open-source Android applications, Shizuku-powered applications, root-powered applications, system tools, utilities, customization tools, privacy applications, developer tools, games, and other useful Android software.
+
+The application must feel like a real production Android app store rather than a GitHub wrapper.
+
+The final application must be:
+
+* Fast
+* Beautiful
+* Beginner-friendly
+* Extremely smooth
+* Secure
+* Offline-capable
+* Accessible
+* Animated
+* Responsive
+* Battery-conscious
+* Network-efficient
+* Open-source friendly
+* Developer friendly
+* Power-user friendly
+* Shizuku aware
+* Root aware
+* Installer aware
+* Automatically synchronized
+* Capable of handling thousands of applications
+* Capable of handling pre-release versions
+* Capable of handling multiple APK architectures
+* Capable of handling APK updates
+* Capable of handling split APKs when possible
+* Capable of generating installable APK builds through GitHub Actions
+
+Do not build a prototype.
+
+Build the application architecture as if it will be published and maintained for years.
+
+---
+
+# 1. PRIMARY SOURCE REPOSITORIES
+
+The application must aggregate application metadata from the following open-source stores, repositories, catalogs, and projects.
+
+Treat these sources as external catalogs and normalize their data into one unified internal model.
+
+Primary project catalog:
+
+https://github.com/krishna3163/best_shizuku_apps_for_android_no_root
+
+ShizuStore reference:
+
+https://github.com/timschneeb/ShizuStore
+
+Additional store/reference projects:
+
+https://play.google.com/store/apps/details?id=scadica.aq
+
+https://github.com/zapstore/zapstore
+
+https://github.com/komi-store/komi-store
+
+https://f-droid.org/en/packages/com.machiav3lli.fdroid/
+
+https://f-droid.org/packages/ua.gardenapple.itchupdater/
+
+https://github.com/Tobi823/ffupdater
+
+https://github.com/mlm-games/flicky
+
+https://f-droid.org/en/packages/in.sunilpaulmathew.izzyondroid/
+
+https://www.openapk.net/
+
+https://github.com/RookieEnough/Orion-Store
+
+https://github.com/rumboalla/apkupdater
+
+Also inspect these projects for useful architectural ideas, UI patterns, update mechanisms, repository handling, metadata structures, download handling, and installation workflows.
+
+Do NOT blindly copy code.
+
+Study the architecture and implement an original, clean architecture suitable for ShizuStore.
+
+The repository:
+
+https://github.com/krishna3163/best_shizuku_apps_for_android_no_root
+
+must be treated as one of the primary application catalogs.
+
+All applications currently present in that repository's catalog should become available in ShizuStore.
+
+Do not manually hardcode hundreds of applications into UI code.
+
+The application catalog must be data-driven.
+
+---
+
+# 2. CORE PRODUCT IDEA
+
+ShizuStore is a unified Android application store for:
+
+1. Shizuku applications
+2. Root applications
+3. No-root applications
+4. ADB-powered applications
+5. System tools
+6. Privacy tools
+7. File managers
+8. Customization tools
+9. Developer tools
+10. Automation tools
+11. Networking tools
+12. Multimedia tools
+13. Games
+14. Open-source applications
+15. F-Droid applications
+16. GitHub release applications
+17. APK repositories
+18. Experimental applications
+19. Beta applications
+20. Developer builds
+
+The user should be able to discover, inspect, download, install, update, rollback where possible, and manage applications from one application.
+
+---
+
+# 3. DESIGN PHILOSOPHY
+
+The UI should be inspired by the usability principles of Google Play Store and modern Material 3 Android applications.
+
+Do NOT clone Google Play Store pixel-for-pixel.
+
+Instead create an original design with:
+
+* Material 3
+* Dynamic colors
+* Rounded cards
+* Large readable typography
+* Clear hierarchy
+* Bottom navigation
+* Search-first discovery
+* Beautiful application cards
+* Large application icons
+* Screenshots
+* Ratings when available
+* Download statistics when available
+* Version badges
+* Source badges
+* Installation state
+* Update state
+* Shizuku state
+* Root state
+* Compatibility state
+
+The UI should feel premium.
+
+---
+
+# 4. CUTE ANIME / CHARACTER DESIGN
+
+The application should have a subtle cute anime-inspired personality.
+
+Create an original mascot for ShizuStore.
+
+Do NOT copy an existing anime character.
+
+The mascot can be an original small Android-inspired character/robot.
+
+Use the mascot contextually:
+
+* Empty search screen
+* No internet
+* No applications found
+* Download complete
+* Installation successful
+* Shizuku disconnected
+* Root unavailable
+* Update available
+* Welcome screen
+* Error state
+* Offline mode
+* Feed empty state
+
+The mascot should not appear everywhere.
+
+Keep the application professional.
+
+The anime/cute design should enhance the experience rather than make it childish.
+
+---
+
+# 5. AMBIENT LIGHT UI
+
+Use the Android ambient light sensor when available.
+
+The UI may subtly react to environmental lighting.
+
+For example:
+
+Bright environment:
+
+* Slightly brighter interface
+* Higher contrast
+* More vibrant accent
+* Reduced shadows
+
+Dark environment:
+
+* Dark Material theme
+* Softer brightness
+* Reduced visual intensity
+* Lower contrast glare
+* Darker surfaces
+
+Do NOT constantly poll the sensor.
+
+Use an efficient SensorManager implementation.
+
+Throttle updates.
+
+Do not drain battery.
+
+If the device does not have a light sensor:
+
+Use normal system theme behavior.
+
+Provide a setting:
+
+Appearance:
+
+* System
+* Light
+* Dark
+* Ambient
+* AMOLED Dark
+
+Ambient mode can be disabled.
+
+---
+
+# 6. ULTRA-SMOOTH UI
+
+Everything must feel smooth.
+
+Use:
+
+* Jetpack Compose
+* Material 3
+* Kotlin
+* Coroutines
+* Flow
+* StateFlow
+* Lifecycle-aware state
+* LazyColumn
+* LazyVerticalGrid
+* Paging
+* Coil/modern image loading
+* Proper caching
+* Stable keys
+* Avoid unnecessary recompositions
+* Avoid blocking main thread
+* Background workers
+* Proper database indexing
+
+Animations must be subtle and purposeful.
+
+Include:
+
+* Shared element style transitions where practical
+* Screen transitions
+* Card press animation
+* Button scale feedback
+* Download progress animation
+* Installation progress animation
+* Skeleton loading
+* Shimmer only where appropriate
+* Pull-to-refresh animation
+* Search animation
+* Bottom navigation animation
+* Expand/collapse animations
+* Snackbar animations
+* Dialog animations
+
+Do not over-animate.
+
+Performance always has priority over decoration.
+
+---
+
+# 7. HAPTIC FEEDBACK
+
+Implement professional haptic feedback.
+
+Examples:
+
+Button tap:
+Light click
+
+Install:
+Medium confirmation
+
+Download started:
+Light feedback
+
+Download completed:
+Success feedback
+
+Installation successful:
+Success pattern
+
+Installation failed:
+Error feedback
+
+Toggle:
+Light tick
+
+Long press:
+Medium feedback
+
+Swipe:
+Subtle feedback
+
+Important actions:
+Stronger confirmation
+
+Use Android's supported haptic APIs.
+
+Respect:
+
+Settings > Haptic Feedback
+
+Options:
+
+* System default
+* On
+* Off
+
+Never force strong vibration unnecessarily.
+
+---
+
+# 8. AUDIO FEEDBACK
+
+Add optional beautiful notification/audio feedback.
+
+Examples:
+
+* Download completed
+* Installation completed
+* Update completed
+* Error
+* New feed interaction
+* New repository submission
+* Shizuku connected
+
+Sounds must be short, subtle, and professional.
+
+Do not use copyrighted audio.
+
+Use original/simple generated sound assets.
+
+Settings:
+
+Sound feedback:
+
+* System default
+* ShizuStore sounds
+* Off
+
+Notification sounds should follow Android notification-channel rules.
+
+Never play annoying sounds repeatedly.
+
+---
+
+# 9. MAIN NAVIGATION
+
+Use bottom navigation.
+
+Primary tabs:
+
+1. Home
+2. Search
+3. Categories
+4. Updates
+5. Library
+
+Additional sections accessible from profile/menu:
+
+* Feed
+* Downloads
+* Shizuku
+* Root
+* Requests
+* Settings
+* About
+* Sources
+* Developer information
+
+---
+
+# 10. HOME SCREEN
+
+Home must look like a real application store.
+
+Top:
+
+ShizuStore logo
+
+Search bar
+
+Notification icon
+
+Profile/menu icon
+
+Then:
+
+Hero section
+
+"Open-source Android apps, without the hassle."
+
+Show:
+
+* Shizuku
+* Root
+* Open Source
+* No Root
+* GitHub
+* F-Droid
+
+Then:
+
+Recommended for you
+
+Popular apps
+
+Recently updated
+
+New releases
+
+Shizuku tools
+
+Root tools
+
+Privacy
+
+Customization
+
+File management
+
+Developer tools
+
+Automation
+
+Games
+
+Experimental
+
+Beta
+
+Developer
+
+Recommended
+
+Trending repositories
+
+Community picks
+
+Each section should support horizontal scrolling.
+
+Use lazy loading.
+
+---
+
+# 11. SEARCH
+
+Search must be extremely powerful.
+
+Support:
+
+* App name
+* Package name
+* Repository name
+* GitHub repository
+* Description
+* Developer
+* Category
+* Tags
+* Permission
+* Shizuku requirement
+* Root requirement
+* Version
+* Architecture
+
+Implement:
+
+* Live search
+* Fuzzy search
+* Prefix search
+* Partial search
+* Typo tolerance
+* Search suggestions
+* Recent searches
+* Trending searches
+
+Example:
+
+User types:
+
+"shiz"
+
+Results should include:
+
+Shizuku
+ShizuTools
+ShizuWall
+Shizuku-powered apps
+etc.
+
+Search filters:
+
+Source:
+
+* GitHub
+* F-Droid
+* OpenAPK
+* ShizuStore
+* Other
+
+Access:
+
+* No Root
+* Shizuku
+* Root
+* ADB
+* System
+
+Release:
+
+* Stable
+* Recommended
+* Beta
+* Dev
+* Nightly
+* Experimental
+
+Architecture:
+
+* Universal
+* arm64-v8a
+* armeabi-v7a
+* x86_64
+* x86
+
+Sort:
+
+* Relevance
+* Popular
+* Recently updated
+* Recently added
+* Downloads
+* Stars
+* Forks
+
+---
+
+# 12. CATEGORIES
+
+Create beautiful category cards.
+
+Categories:
+
+* Shizuku
+* Root
+* System Tools
+* File Management
+* Privacy
+* Security
+* Customization
+* Launcher
+* Automation
+* Developer Tools
+* Networking
+* Multimedia
+* Productivity
+* Backup
+* Android Tools
+* Accessibility
+* Communication
+* Education
+* Games
+* Finance
+* Browser
+* Open Source
+* Experimental
+
+Categories must be dynamic.
+
+Do not hardcode application lists inside category screens.
+
+---
+
+# 13. APPLICATION DETAIL PAGE
+
+Every application needs a professional detail page.
+
+Show:
+
+Application icon
+
+Application name
+
+Developer
+
+Repository
+
+Description
+
+Version
+
+Version type
+
+Stable/Beta/Dev/Nightly/Experimental
+
+Download size
+
+Architecture
+
+Android minimum version
+
+Android target version
+
+Last updated
+
+First published
+
+GitHub stars
+
+GitHub forks
+
+GitHub issues
+
+Repository license
+
+Open-source status
+
+Source provider
+
+Shizuku requirement
+
+Root requirement
+
+ADB requirement
+
+System requirement
+
+Permissions
+
+Screenshots
+
+Videos if available
+
+Changelog
+
+Release notes
+
+Installation methods
+
+Security information
+
+Data safety
+
+Known issues
+
+Compatibility
+
+Dependencies
+
+Related applications
+
+Alternative versions
+
+All versions
+
+Source links
+
+Website
+
+Repository
+
+Issues
+
+Releases
+
+License
+
+Developer profile
+
+---
+
+# 14. VERSION SYSTEM
+
+Every application can have multiple release channels.
+
+Supported channels:
+
+STABLE
+
+RECOMMENDED
+
+BETA
+
+DEV
+
+NIGHTLY
+
+EXPERIMENTAL
+
+PRE-RELEASE
+
+The UI should clearly distinguish them.
+
+Example:
+
+Version 3.2.1
+
+RECOMMENDED
+
+Version 3.3.0-beta02
+
+BETA
+
+Version 3.4.0-dev
+
+DEV
+
+Users can configure:
+
+Default release channel:
+
+* Stable
+* Recommended
+* Beta
+* Dev
+* Nightly
+* Experimental
+
+Default should be Stable/Recommended.
+
+Do not install prerelease versions unless the user has explicitly enabled them.
+
+---
+
+# 15. EXPERT MODE
+
+Add:
+
+Settings > Expert Mode
+
+Default:
+
+OFF
+
+When disabled:
+
+Hide dangerous/technical complexity.
+
+When enabled:
+
+Show:
+
+* Package name
+* APK filename
+* APK hash
+* SHA-256
+* Signing certificate
+* Version code
+* Version name
+* Architecture
+* ABI
+* Min SDK
+* Target SDK
+* Permissions
+* Requested permissions
+* Installer package
+* Installation session ID
+* Release asset
+* Git commit
+* Build timestamp
+* Repository
+* Release ID
+* APK size
+* Download URL
+* Mirror
+* Signature information
+* Install flags
+* Split APK information
+* APK type
+* Root state
+* Shizuku state
+
+Expert Mode must include warnings for dangerous operations.
+
+---
+
+# 16. INSTALLATION SYSTEM
+
+Installation is one of the most important features.
+
+Create a dedicated:
+
+"Choose Installation Method"
+
+screen.
+
+Supported installation methods:
+
+1. Shizuku Installer
+2. Session Installer
+3. System Installer
+4. Root Installer
+5. Custom Installer
+
+Each method must have its own implementation.
+
+---
+
+# 17. SHIZUKU INSTALLER
+
+Detect whether Shizuku is installed.
+
+Detect whether Shizuku service is running.
+
+Detect permission.
+
+Display:
+
+Shizuku:
+
+Running
+
+or:
+
+Shizuku:
+
+Not Running
+
+If not running:
+
+Show:
+
+"Start Shizuku"
+
+"How to setup"
+
+"Open Shizuku"
+
+"Wireless debugging guide"
+
+When installing through Shizuku:
+
+Download APK
+
+Verify download
+
+Verify checksum if available
+
+Check architecture
+
+Request required Shizuku permission
+
+Create installation session where supported
+
+Stream APK to installer
+
+Show progress
+
+Handle errors
+
+Finalize installation
+
+Show success screen.
+
+Do not request Shizuku permission repeatedly.
+
+Cache permission state.
+
+---
+
+# 18. SESSION INSTALLER
+
+Implement Android PackageInstaller Session API.
+
+Support:
+
+* APK installation
+* Multiple APK/split installation where supported
+* Progress
+* Cancellation
+* Install result
+* Failure reason
+* User confirmation when Android requires it
+
+Display:
+
+Downloading
+
+Verifying
+
+Preparing
+
+Installing
+
+Finalizing
+
+Complete
+
+---
+
+# 19. SYSTEM INSTALLER
+
+Support Android's normal package installation flow.
+
+If system restrictions require user interaction:
+
+Launch Android system installer.
+
+Never attempt to bypass Android security restrictions.
+
+Clearly explain why system confirmation is required.
+
+---
+
+# 20. ROOT INSTALLER
+
+If root is available:
+
+Detect root.
+
+Never assume root exists.
+
+Show:
+
+Root access available
+
+or:
+
+Root unavailable
+
+If root installation is selected:
+
+Confirm with user.
+
+Display clear warning.
+
+Use secure root command execution.
+
+Never silently execute destructive commands.
+
+Do not store root credentials.
+
+Do not log sensitive root commands.
+
+Use root only for installation functionality.
+
+---
+
+# 21. CUSTOM INSTALLER
+
+Allow advanced users to choose a custom installer source.
+
+Possible inputs:
+
+* Local APK
+* Downloaded APK
+* APK URL
+* File URI
+* Custom package installer
+* Supported external installer application
+
+Validate the source.
+
+Show warning if source is not trusted.
+
+Never execute arbitrary downloaded code.
+
+---
+
+# 22. INSTALLATION UI
+
+Installation should feel premium.
+
+Flow:
+
+1. Downloading
+2. Verifying
+3. Checking compatibility
+4. Preparing
+5. Installing
+6. Finalizing
+7. Completed
+
+Show:
+
+Progress percentage
+
+Downloaded MB
+
+Total MB
+
+Download speed
+
+Estimated time
+
+Verification state
+
+Installer used
+
+Architecture
+
+Version
+
+Cancel button
+
+After success:
+
+"Installed successfully"
+
+Open
+
+Done
+
+Share
+
+View app
+
+---
+
+# 23. SECURITY
+
+Security is critical.
+
+Never trust APK metadata blindly.
+
+Perform:
+
+* HTTPS-only downloads where possible
+* SHA-256 verification
+* Signature verification
+* APK parsing
+* Package name validation
+* Version validation
+* Architecture validation
+* MIME type validation
+* File size validation
+* Safe file paths
+* Temporary download directories
+* Cleanup after installation
+
+Detect mismatch between:
+
+Repository package name
+
+APK package name
+
+Displayed application
+
+Warn user.
+
+Show:
+
+"Source could not be verified."
+
+when verification fails.
+
+Never silently install an APK with suspicious metadata.
+
+---
+
+# 24. DOWNLOAD MANAGER
+
+Build a real download manager.
+
+Support:
+
+* Queue
+* Pause
+* Resume
+* Cancel
+* Retry
+* Concurrent downloads with limits
+* Wi-Fi only
+* Mobile data warning
+* Background download
+* Notification progress
+* Download history
+* Automatic cleanup
+
+Use WorkManager where appropriate.
+
+Downloads must survive app restarts.
+
+---
+
+# 25. OFFLINE MODE
+
+Cache:
+
+* Application metadata
+* Icons
+* Screenshots
+* Categories
+* Versions
+* Repository information
+* User library
+* Feed content
+
+When offline:
+
+Display:
+
+"You are offline"
+
+but allow:
+
+* Browse cached apps
+* View installed apps
+* View download history
+* View saved apps
+* View cached versions
+
+Do not make the entire application unusable without internet.
+
+---
+
+# 26. AUTOMATIC REPOSITORY SYNCHRONIZATION
+
+This is a critical requirement.
+
+Whenever the application starts/open:
+
+Perform a background synchronization check.
+
+Do NOT block the UI.
+
+Flow:
+
+App opens
+
+↓
+
+Show cached content immediately
+
+↓
+
+Start background sync
+
+↓
+
+Check configured catalogs
+
+↓
+
+Fetch repository metadata
+
+↓
+
+Compare versions
+
+↓
+
+Compare release timestamps
+
+↓
+
+Compare hashes when available
+
+↓
+
+Update local database
+
+↓
+
+Update UI automatically
+
+The user must not need to manually update the store catalog.
+
+---
+
+# 27. BACKGROUND SYNC
+
+Use WorkManager.
+
+Default:
+
+Periodic sync.
+
+Recommended:
+
+Every 6–12 hours depending on Android background restrictions.
+
+Also sync:
+
+* On application launch
+* On manual refresh
+* When network becomes available
+* After significant time has passed
+* After repository configuration changes
+
+Do not aggressively wake the device.
+
+Respect Android battery restrictions.
+
+---
+
+# 28. SMART SYNC
+
+Do not download everything on every sync.
+
+Use:
+
+ETag
+
+Last-Modified
+
+Release IDs
+
+Commit SHA
+
+Version code
+
+Version name
+
+Timestamp
+
+Content hash
+
+Only download changed data.
+
+For example:
+
+If repository metadata has not changed:
+
+Do nothing.
+
+If application release changed:
+
+Update only that application.
+
+If icon changed:
+
+Download only the icon.
+
+If screenshots changed:
+
+Download only changed screenshots.
+
+---
+
+# 29. PRIMARY ADMIN REPOSITORY WORKFLOW
+
+The repository:
+
+https://github.com/krishna3163/best_shizuku_apps_for_android_no_root
+
+acts as the primary catalog administration source.
+
+Admin adds a new application to the catalog.
+
+Example:
+
+Add repository entry.
+
+↓
+
+GitHub changes.
+
+↓
+
+ShizuStore detects repository change.
+
+↓
+
+Fetch new app.
+
+↓
+
+Parse metadata.
+
+↓
+
+Fetch release.
+
+↓
+
+Fetch APK assets.
+
+↓
+
+Index application.
+
+↓
+
+Application becomes available in ShizuStore.
+
+No manual Play Store-style app publishing process is required.
+
+---
+
+# 30. ADMIN ADD-APP REQUEST SYSTEM
+
+Users must be able to request that an open-source application be added.
+
+Add:
+
+"Request an App"
+
+screen.
+
+Fields:
+
+GitHub repository URL
+
+Application name
+
+Reason
+
+Category
+
+Optional description
+
+Optional developer information
+
+Optional website
+
+Submit request
+
+GitHub URL is mandatory.
+
+Validate the URL.
+
+Accept valid GitHub repository URLs only.
+
+Reject:
+
+Invalid URLs
+
+Non-GitHub URLs
+
+Malformed repositories
+
+Obvious spam
+
+---
+
+# 31. REQUEST WORKFLOW
+
+User submits request.
+
+↓
+
+Validate GitHub URL.
+
+↓
+
+Check whether repository already exists.
+
+↓
+
+Check duplicate request.
+
+↓
+
+Create request.
+
+↓
+
+Send notification to admin.
+
+↓
+
+Admin receives email.
+
+↓
+
+Admin reviews request.
+
+↓
+
+Admin either:
+
+Approve
+
+Reject
+
+Need more information
+
+If approved:
+
+Admin adds repository to catalog configuration.
+
+↓
+
+GitHub repository changes.
+
+↓
+
+ShizuStore automatically syncs.
+
+↓
+
+Application appears in store.
+
+---
+
+# 32. ADMIN EMAIL
+
+Admin should receive email for new app requests.
+
+Do NOT place SMTP passwords/API keys inside Android source code.
+
+Use a secure backend/service or GitHub automation.
+
+Possible architecture:
+
+Android
+
+→ secure request endpoint
+
+→ backend/serverless function
+
+→ email provider
+
+→ admin email
+
+Alternatively:
+
+Android
+
+→ GitHub Issue/Discussion through a secure backend
+
+→ GitHub Action
+
+→ email notification
+
+Use environment variables/secrets.
+
+Never expose:
+
+SMTP password
+
+API key
+
+GitHub private token
+
+Admin credentials
+
+inside APK.
+
+---
+
+# 33. REQUEST STATUS
+
+Users should be able to see:
+
+Pending
+
+Under Review
+
+Approved
+
+Rejected
+
+Needs Information
+
+Added
+
+If the user is authenticated, show their request history.
+
+Admin can manage status from GitHub or an admin panel.
+
+---
+
+# 34. FEED / COMMUNITY SYSTEM
+
+Add a dedicated:
+
+"Feed"
+
+section.
+
+This is a community discovery feed for useful open-source Android projects.
+
+Users can post:
+
+GitHub repositories
+
+Open-source applications
+
+Tools
+
+Libraries
+
+Android projects
+
+Useful scripts
+
+Tutorial repositories
+
+ROM tools
+
+Shizuku projects
+
+Root tools
+
+Developer tools
+
+---
+
+# 35. FEED POST REQUIREMENTS
+
+A feed post MUST contain a valid GitHub repository link.
+
+Optional:
+
+Title
+
+Description
+
+Category
+
+Tags
+
+Screenshot
+
+Version
+
+Release channel
+
+Why the user recommends it
+
+The GitHub link is mandatory.
+
+Validate the repository.
+
+Fetch repository metadata automatically.
+
+Show:
+
+Repository name
+
+Owner
+
+Description
+
+Stars
+
+Forks
+
+Open issues
+
+License
+
+Last update
+
+Primary language
+
+Topics
+
+Latest release
+
+Latest release date
+
+---
+
+# 36. FEED POSTS
+
+Each post should show:
+
+User avatar
+
+Username
+
+Time
+
+Repository card
+
+Title
+
+Description
+
+GitHub stars
+
+Forks
+
+Last updated
+
+Release channel
+
+Like
+
+Comment
+
+Repost
+
+Share
+
+Bookmark
+
+More
+
+---
+
+# 37. REPOST SYSTEM
+
+Users can repost existing feed posts.
+
+Feed ordering should support:
+
+Reposted content
+
+Original content
+
+If a repost exists:
+
+Display reposted content higher.
+
+Example:
+
+"Krishna reposted"
+
+Then show original post.
+
+The original post should remain visible below/within the repost context.
+
+Do not duplicate the actual post object.
+
+Use references:
+
+repost_id
+
+original_post_id
+
+user_id
+
+timestamp
+
+---
+
+# 38. COMMENTS
+
+Users can comment on posts.
+
+Comments support:
+
+* Create
+* Read
+* Update
+* Delete
+
+The user who created a comment can edit/delete their own comment.
+
+Admins can moderate comments.
+
+Support:
+
+Replies
+
+Likes
+
+Report
+
+Delete
+
+Edit
+
+---
+
+# 39. POST CRUD
+
+Users must have full CRUD permissions over posts they own.
+
+Create:
+
+Create post.
+
+Read:
+
+View post.
+
+Update:
+
+Edit own post.
+
+Delete:
+
+Delete own post.
+
+A user must NOT be able to modify another user's post.
+
+Use proper authorization.
+
+Server-side authorization is mandatory.
+
+Never rely only on UI restrictions.
+
+---
+
+# 40. USER AUTHENTICATION
+
+Implement secure authentication.
+
+Possible:
+
+Google Sign-In
+
+GitHub OAuth
+
+Email authentication
+
+Passkeys where practical
+
+Anonymous browsing should be allowed.
+
+Authentication is required for:
+
+Posting
+
+Commenting
+
+Liking
+
+Reposting
+
+Requesting applications
+
+Bookmarking
+
+Following
+
+User profile
+
+Do not require login merely to browse applications.
+
+---
+
+# 41. USER PROFILE
+
+Profile contains:
+
+Avatar
+
+Username
+
+Bio
+
+Joined date
+
+Posts
+
+Likes
+
+Reposts
+
+Bookmarks
+
+Requested applications
+
+Developer repositories
+
+Following
+
+Followers
+
+Activity
+
+Settings
+
+Privacy controls
+
+---
+
+# 42. FEED DISCOVERY
+
+Feed tabs:
+
+For You
+
+Following
+
+Trending
+
+Latest
+
+Open Source
+
+Shizuku
+
+Root
+
+Android
+
+Developer
+
+Games
+
+The recommendation algorithm should initially be simple and transparent.
+
+Signals:
+
+Followed topics
+
+Likes
+
+Reposts
+
+Bookmarks
+
+Searches
+
+Recently viewed categories
+
+Do not build a creepy opaque algorithm.
+
+Allow users to control personalization.
+
+---
+
+# 43. GITHUB METADATA
+
+For repositories, show:
+
+Stars
+
+Forks
+
+Watchers when available
+
+Open issues
+
+License
+
+Language
+
+Topics
+
+Created date
+
+Updated date
+
+Latest release
+
+Latest release date
+
+Commit activity where available
+
+Repository size where useful
+
+Contributors where useful
+
+README preview
+
+---
+
+# 44. APP VERSION LABELS
+
+Every app should support:
+
+Recommended
+
+Stable
+
+Beta
+
+Dev
+
+Nightly
+
+Experimental
+
+Pre-release
+
+Show visually distinct badges.
+
+Recommended:
+
+Use only when the catalog administrator marks a version/app as recommended.
+
+Do not infer "recommended" solely from stars.
+
+---
+
+# 45. PRE-RELEASE SUPPORT
+
+When a repository publishes a pre-release:
+
+Detect it.
+
+Store it separately.
+
+Do not automatically replace stable release.
+
+Example:
+
+Stable:
+
+2.1.0
+
+Beta:
+
+2.2.0-beta1
+
+Dev:
+
+2.2.0-dev20261002
+
+UI:
+
+Latest stable
+
+Pre-release available
+
+Enable experimental releases
+
+---
+
+# 46. UPDATE DETECTION
+
+For installed applications:
+
+Read installed package:
+
+packageName
+
+versionCode
+
+versionName
+
+signature
+
+Then compare against store catalog.
+
+If newer version exists:
+
+Show:
+
+Update available
+
+Current:
+
+1.2.0
+
+Latest:
+
+1.4.0
+
+Update button.
+
+If user enables beta:
+
+Compare against beta channel.
+
+If user enables dev:
+
+Compare against dev channel.
+
+---
+
+# 47. UPDATE ALL
+
+Updates screen:
+
+Available updates
+
+Update All
+
+Per-app Update
+
+Ignore version
+
+Ignore application
+
+Release notes
+
+Change architecture
+
+Installation method
+
+Update queue
+
+The user should be able to update multiple applications.
+
+Respect Android installation restrictions.
+
+---
+
+# 48. LIBRARY
+
+Library should contain:
+
+Installed
+
+Updates
+
+Downloads
+
+Favorites
+
+Bookmarks
+
+History
+
+Ignored updates
+
+Downloaded APKs
+
+Failed downloads
+
+Pre-release apps
+
+---
+
+# 49. INSTALLED APPLICATION DETECTION
+
+Use PackageManager safely.
+
+Display:
+
+Installed
+
+Not installed
+
+Update available
+
+Downgrade available
+
+Incompatible
+
+Architecture mismatch
+
+Requires Shizuku
+
+Requires Root
+
+---
+
+# 50. APP COMPATIBILITY ENGINE
+
+Before installation calculate:
+
+Device ABI
+
+Android version
+
+SDK
+
+Architecture
+
+Package name
+
+Version
+
+Required permissions
+
+Root requirement
+
+Shizuku requirement
+
+Dependencies
+
+Installer compatibility
+
+Then display:
+
+Compatible
+
+Partially compatible
+
+Not compatible
+
+Unknown
+
+Never claim compatibility when information is missing.
+
+---
+
+# 51. PERMISSIONS PAGE
+
+Every application should have:
+
+Permissions
+
+Dangerous permissions
+
+Normal permissions
+
+Special permissions
+
+Shizuku requirement
+
+Root requirement
+
+Accessibility requirement
+
+Notification permission
+
+Unknown permissions
+
+For expert mode:
+
+Show raw Android permission names.
+
+Example:
+
+android.permission.PACKAGE_USAGE_STATS
+
+android.permission.REQUEST_INSTALL_PACKAGES
+
+etc.
+
+---
+
+# 52. DATA SAFETY
+
+Where metadata allows it, show:
+
+Data collection
+
+Data sharing
+
+Network access
+
+Storage access
+
+Location
+
+Camera
+
+Microphone
+
+Accessibility
+
+Device identifiers
+
+Analytics
+
+If data is unknown:
+
+"Not provided by developer"
+
+Do not invent privacy claims.
+
+---
+
+# 53. SOURCE TRANSPARENCY
+
+Every application should clearly show:
+
+Source
+
+Repository
+
+Release source
+
+Download source
+
+License
+
+Developer
+
+Website
+
+Issue tracker
+
+Release history
+
+This is extremely important because ShizuStore is focused on open-source applications.
+
+---
+
+# 54. DOWNLOAD SOURCE PRIORITY
+
+Each application can define:
+
+Primary source
+
+Fallback source
+
+Mirror
+
+GitHub Release
+
+F-Droid
+
+OpenAPK
+
+Other supported source
+
+Use secure priority logic.
+
+Do not download random APK mirrors without explicit support.
+
+---
+
+# 55. APK ARCHITECTURE
+
+Support:
+
+universal
+
+arm64-v8a
+
+armeabi-v7a
+
+x86_64
+
+x86
+
+Preferred order:
+
+1. universal
+2. arm64-v8a
+3. armeabi-v7a
+4. x86_64
+5. x86
+
+But dynamically choose based on actual device ABI.
+
+Do not install incompatible APKs.
+
+---
+
+# 56. SPLIT APK
+
+If supported by source:
+
+Handle:
+
+APK
+
+APKS
+
+XAPK
+
+Split APK sets
+
+Multiple APK assets
+
+Use appropriate PackageInstaller session APIs.
+
+If a format cannot be safely installed:
+
+Explain why.
+
+Do not silently fail.
+
+---
+
+# 57. ROOT + SHIZUKU STATUS PAGE
+
+Create a dedicated technical status screen.
+
+Show:
+
+Shizuku
+
+Running / Stopped
+
+Version
+
+Permission
+
+Authorized applications
+
+Root
+
+Available / unavailable
+
+Root manager where detectable
+
+ADB
+
+Available/unavailable where detectable
+
+Installer
+
+Available methods
+
+Android version
+
+Device
+
+ABI
+
+SDK
+
+---
+
+# 58. SHIZUKU SETUP GUIDE
+
+Beginner-friendly guide:
+
+Step 1
+
+Install Shizuku.
+
+Step 2
+
+Enable Developer Options.
+
+Step 3
+
+Enable Wireless Debugging.
+
+Step 4
+
+Pair Shizuku.
+
+Step 5
+
+Start service.
+
+Step 6
+
+Return to ShizuStore.
+
+Step 7
+
+Grant permission.
+
+Use illustrations/animations where possible.
+
+Never expose users to unnecessary technical jargon.
+
+---
+
+# 59. BEGINNER MODE
+
+Default mode:
+
+Beginner.
+
+Hide:
+
+Raw package data
+
+Hashes
+
+Install flags
+
+Advanced architecture
+
+Root commands
+
+Internal IDs
+
+Debug information
+
+Then:
+
+Expert Mode
+
+reveals technical information.
+
+---
+
+# 60. SETTINGS
+
+Settings should include:
+
+Account
+
+Appearance
+
+Theme
+
+Ambient Light UI
+
+Animations
+
+Haptic feedback
+
+Sound feedback
+
+Default installer
+
+Shizuku
+
+Root
+
+Download
+
+Network
+
+Wi-Fi only
+
+Automatic updates
+
+Automatic sync
+
+Update channel
+
+Pre-release
+
+Beta
+
+Dev
+
+Nightly
+
+Expert Mode
+
+Security
+
+Verify APK
+
+Checksum verification
+
+Signature verification
+
+Privacy
+
+Analytics
+
+Notifications
+
+Feed
+
+Personalization
+
+Storage
+
+Cache
+
+Language
+
+About
+
+Open-source licenses
+
+---
+
+# 61. NOTIFICATIONS
+
+Create Android notification channels:
+
+Downloads
+
+Installations
+
+Updates
+
+Repository Sync
+
+Feed
+
+Requests
+
+Security
+
+System
+
+Notifications should be actionable.
+
+Download notification:
+
+Pause
+
+Cancel
+
+Open
+
+Installation:
+
+Open
+
+Done
+
+Update:
+
+Update
+
+Later
+
+Repository sync:
+
+View updates
+
+---
+
+# 62. AUTOMATIC APP UPDATE
+
+When a repository publishes a new version:
+
+Repository changes
+
+↓
+
+Background sync detects change
+
+↓
+
+Parse release
+
+↓
+
+Compare installed version
+
+↓
+
+Generate update record
+
+↓
+
+Notify user
+
+↓
+
+User chooses Update
+
+OR
+
+if automatic update is explicitly enabled and Android/device policy permits:
+
+Queue update.
+
+Do NOT silently bypass Android security/user-consent restrictions.
+
+---
+
+# 63. STORE CATALOG UPDATE
+
+Store metadata should update independently of app APK updates.
+
+For example:
+
+Catalog:
+
+v10
+
+Application:
+
+v4.2
+
+If catalog changes:
+
+Only metadata updates.
+
+If app release changes:
+
+Only release data updates.
+
+---
+
+# 64. DATABASE
+
+Use Room.
+
+Suggested entities:
+
+App
+
+AppRelease
+
+AppAsset
+
+AppScreenshot
+
+Repository
+
+Developer
+
+Category
+
+Tag
+
+InstalledApp
+
+Download
+
+Update
+
+User
+
+Post
+
+Comment
+
+Like
+
+Repost
+
+Bookmark
+
+AppRequest
+
+SyncState
+
+Notification
+
+FeedInteraction
+
+Source
+
+Permission
+
+AppCompatibility
+
+Use proper indexes.
+
+Avoid loading thousands of records into memory.
+
+Use Paging.
+
+---
+
+# 65. REPOSITORY ARCHITECTURE
+
+Use clean architecture.
+
+Recommended:
+
+UI
+
+↓
+ViewModel
+
+↓
+Use Cases
+
+↓
+Repositories
+
+↓
+Local Data Source / Remote Data Source
+
+Suggested modules:
+
+app
+
+core
+
+core-ui
+
+core-network
+
+core-database
+
+core-model
+
+core-installer
+
+core-shizuku
+
+core-root
+
+core-download
+
+feature-home
+
+feature-search
+
+feature-categories
+
+feature-details
+
+feature-install
+
+feature-updates
+
+feature-library
+
+feature-feed
+
+feature-profile
+
+feature-settings
+
+feature-admin-request
+
+---
+
+# 66. NETWORKING
+
+Use:
+
+Ktor or Retrofit
+
+OkHttp where appropriate
+
+Kotlin serialization
+
+HTTP caching
+
+ETag
+
+Last-Modified
+
+Timeouts
+
+Retry policy
+
+Exponential backoff
+
+Connection awareness
+
+Do not retry forever.
+
+---
+
+# 67. API RATE LIMITING
+
+GitHub API has rate limits.
+
+Design around them.
+
+Use:
+
+Authenticated API where legally/configurably possible
+
+Caching
+
+ETags
+
+GraphQL only where justified
+
+Raw GitHub release URLs where appropriate
+
+Batch requests
+
+Local repository metadata
+
+Never spam GitHub API on every screen.
+
+---
+
+# 68. GITHUB TOKEN SECURITY
+
+Never hardcode a private GitHub token.
+
+For public repository access:
+
+Use unauthenticated APIs where sufficient.
+
+For admin functionality:
+
+Use secure backend secrets.
+
+Never put admin token inside APK.
+
+---
+
+# 69. AUTOMATIC CATALOG GENERATOR
+
+Create a sync/parser layer that understands repository configuration.
+
+Example configuration concept:
+
+{
+"name": "...",
+"slug": "...",
+"repository": "owner/repo",
+"enabled": true,
+"shizuku": true,
+"root": false,
+"release_strategy": "latest-stable",
+"asset_patterns": ["...apk"],
+"exclude_patterns": ["debug", "unsigned", "test"]
+}
+
+Support additional metadata:
+
+category
+
+tags
+
+description
+
+homepage
+
+license
+
+recommended
+
+channel
+
+source
+
+install_methods
+
+minimum_android
+
+---
+
+# 70. CATALOG VALIDATION
+
+Before importing an application:
+
+Validate:
+
+Repository exists
+
+Repository is public
+
+Release exists
+
+APK exists
+
+APK is downloadable
+
+Package can be parsed
+
+Architecture can be identified
+
+Version can be identified
+
+Checksum can be calculated
+
+Source URL is valid
+
+Do not add broken applications to the active catalog.
+
+Mark broken entries:
+
+Unavailable
+
+Broken release
+
+No APK
+
+Unsupported
+
+---
+
+# 71. SYNC ERROR HANDLING
+
+If one repository fails:
+
+Do NOT fail the entire synchronization.
+
+Example:
+
+Repository A succeeds
+
+Repository B fails
+
+Repository C succeeds
+
+Store:
+
+B = sync failed
+
+Retry later.
+
+Show:
+
+"Some sources could not be synchronized."
+
+---
+
+# 72. SYNC DASHBOARD
+
+Expert mode can show:
+
+Last sync
+
+Next sync
+
+Sources checked
+
+Apps updated
+
+Apps added
+
+Apps removed
+
+Errors
+
+Warnings
+
+Download count
+
+API requests
+
+Cache hits
+
+---
+
+# 73. GITHUB ACTIONS
+
+Create GitHub Actions workflows.
+
+Required workflows:
+
+CI
+
+Build
+
+Test
+
+Lint
+
+Release
+
+APK Build
+
+Catalog Validation
+
+Catalog Sync Validation
+
+Security Scan
+
+Dependency Update
+
+---
+
+# 74. APK BUILD
+
+The repository must automatically generate APKs.
+
+At minimum:
+
+Debug APK
+
+Release APK
+
+Release builds should use signing configuration through GitHub Secrets.
+
+Never commit keystore files.
+
+Use:
+
+ANDROID_KEYSTORE_BASE64
+
+KEYSTORE_PASSWORD
+
+KEY_ALIAS
+
+KEY_PASSWORD
+
+or equivalent secure secrets.
+
+If signing secrets are unavailable:
+
+Generate unsigned release artifact and clearly label it.
+
+GitHub Actions should upload:
+
+APK
+
+Mapping file if generated
+
+Build metadata
+
+Checksums
+
+---
+
+# 75. RELEASE PIPELINE
+
+When a version tag is pushed:
+
+Example:
+
+v1.0.0
+
+GitHub Actions:
+
+Run tests
+
+Run lint
+
+Build
+
+Sign if credentials exist
+
+Generate SHA-256
+
+Create GitHub Release
+
+Upload APK
+
+Upload checksum
+
+Upload changelog
+
+---
+
+# 76. AUTOMATIC APPLICATION STORE RELEASE
+
+When ShizuStore itself publishes a new version:
+
+GitHub Release
+
+↓
+
+Catalog detects new ShizuStore release
+
+↓
+
+Update available
+
+This should use the same update infrastructure.
+
+---
+
+# 77. TESTING
+
+Write real tests.
+
+Unit tests:
+
+Parser
+
+Version comparison
+
+Architecture selection
+
+Compatibility
+
+Search
+
+Filtering
+
+Repository parsing
+
+Release detection
+
+Checksum
+
+Permission parsing
+
+Installer selection
+
+Sync state
+
+Feed permissions
+
+CRUD authorization logic
+
+Integration tests:
+
+Database
+
+Repository sync
+
+Download manager
+
+PackageInstaller abstraction
+
+Shizuku abstraction
+
+Root abstraction
+
+Feed API
+
+Request API
+
+UI tests:
+
+Home
+
+Search
+
+Details
+
+Install flow
+
+Updates
+
+Library
+
+Settings
+
+Feed
+
+Request
+
+---
+
+# 78. SECURITY TESTING
+
+Test:
+
+Invalid repository
+
+Malicious URL
+
+Path traversal
+
+APK mismatch
+
+Package mismatch
+
+Hash mismatch
+
+Signature mismatch
+
+Unauthorized post edit
+
+Unauthorized post deletion
+
+Unauthorized comment deletion
+
+Unauthorized request modification
+
+Fake user ID
+
+Token leakage
+
+Admin endpoint exposure
+
+GitHub token exposure
+
+SQL injection if backend exists
+
+XSS if web backend exists
+
+Rate limiting
+
+---
+
+# 79. FEED MODERATION
+
+Add:
+
+Report post
+
+Report comment
+
+Block user
+
+Mute user
+
+Admin moderation
+
+Spam detection
+
+Invalid GitHub URL detection
+
+Deleted repository detection
+
+NSFW/suspicious repository flagging where technically feasible
+
+Do not automatically ban based only on weak signals.
+
+---
+
+# 80. REPOSITORY VALIDATION
+
+When a user submits a GitHub link:
+
+Normalize URL.
+
+Example accepted patterns:
+
+github.com/user/repo
+
+[www.github.com/user/repo](http://www.github.com/user/repo)
+
+GitHub URL with trailing slash
+
+Reject arbitrary domains.
+
+Extract:
+
+owner
+
+repo
+
+Validate through GitHub.
+
+---
+
+# 81. DUPLICATE DETECTION
+
+If a repository already exists:
+
+Do not create duplicate catalog entries.
+
+For feed:
+
+If same repository is already posted:
+
+Show:
+
+"This repository has already been shared."
+
+Allow repost instead.
+
+---
+
+# 82. STAR / FORK INFORMATION
+
+Fetch repository:
+
+Stars
+
+Forks
+
+Issues
+
+Language
+
+License
+
+Topics
+
+Updated date
+
+Display on repository cards.
+
+Use cached values.
+
+Do not call GitHub API every time a feed card appears.
+
+---
+
+# 83. LIVE FEED
+
+Feed can refresh using:
+
+Pull-to-refresh
+
+Periodic background refresh
+
+Realtime backend where available
+
+Cache-first loading.
+
+Do not force realtime infrastructure if unnecessary.
+
+A practical architecture is:
+
+Local cache
+
+↓
+
+Background sync
+
+↓
+
+Backend
+
+↓
+
+GitHub metadata
+
+---
+
+# 84. POST ORDER
+
+Default feed ranking:
+
+1. Relevant reposted content
+2. Recent high-quality posts
+3. Community engagement
+4. Followed users/topics
+5. Fresh repository updates
+
+But avoid an opaque engagement-only algorithm.
+
+Provide sorting:
+
+For You
+
+Latest
+
+Trending
+
+Following
+
+---
+
+# 85. APP CARD DESIGN
+
+Every app card should include:
+
+Icon
+
+Name
+
+Developer
+
+Category
+
+Short description
+
+Rating if available
+
+Stars if GitHub source
+
+Downloads if available
+
+Version
+
+Update date
+
+Badge
+
+Install/Open/Update button
+
+Shizuku badge
+
+Root badge
+
+Open Source badge
+
+---
+
+# 86. STORE BADGES
+
+Examples:
+
+SHIZUKU
+
+ROOT
+
+NO ROOT
+
+OPEN SOURCE
+
+F-DROID
+
+GITHUB
+
+BETA
+
+DEV
+
+NIGHTLY
+
+RECOMMENDED
+
+EXPERIMENTAL
+
+SYSTEM
+
+Use small chips.
+
+Do not overcrowd cards.
+
+---
+
+# 87. ANIMATED APP DETAILS
+
+When opening app details:
+
+App icon smoothly transitions into header.
+
+Screenshot carousel supports swipe.
+
+Install button has subtle spring animation.
+
+Version badge animates when changed.
+
+Download progress morphs into install progress.
+
+Success state shows subtle celebratory animation.
+
+Do not use huge distracting animations.
+
+---
+
+# 88. GESTURES
+
+Implement Android-friendly gestures.
+
+Supported:
+
+Swipe back
+
+Pull to refresh
+
+Swipe cards where meaningful
+
+Swipe download item to remove/cancel
+
+Long press app for quick actions
+
+Swipe screenshot gallery
+
+Swipe feed post actions where appropriate
+
+Bottom-sheet drag
+
+Expandable sections
+
+Do not override system gestures.
+
+Support accessibility.
+
+---
+
+# 89. QUICK ACTIONS
+
+Long press app:
+
+Install
+
+Update
+
+Open
+
+Share
+
+View source
+
+Bookmark
+
+Ignore updates
+
+View versions
+
+---
+
+# 90. SEARCH FILTER SHEET
+
+Search filters should be a beautiful bottom sheet.
+
+Filters:
+
+Category
+
+Source
+
+Root
+
+Shizuku
+
+Android version
+
+Architecture
+
+Release channel
+
+License
+
+Open source
+
+Updated date
+
+Size
+
+Sort
+
+Apply
+
+Reset
+
+---
+
+# 91. APP SCREENSHOT GALLERY
+
+Support:
+
+Horizontal swipe
+
+Full-screen viewer
+
+Zoom where useful
+
+Video preview where available
+
+Image caching
+
+Loading placeholders
+
+---
+
+# 92. APP CHANGELOG
+
+Show release notes.
+
+Support:
+
+Latest release
+
+Previous releases
+
+Pre-releases
+
+Compare versions where possible.
+
+---
+
+# 93. ROLLBACK / VERSION SELECTION
+
+Expert users may select an older version.
+
+Show:
+
+Current installed version
+
+Available versions
+
+Older versions
+
+Pre-release versions
+
+Downgrade warning.
+
+Android may restrict downgrade.
+
+If unavailable:
+
+Explain clearly.
+
+Never claim downgrade support when the OS rejects it.
+
+---
+
+# 94. DOWNLOAD VERIFICATION
+
+If repository provides checksum:
+
+Verify it.
+
+If not:
+
+Calculate local checksum.
+
+Expert mode:
+
+Show SHA-256.
+
+If verification fails:
+
+Stop installation.
+
+Display critical warning.
+
+---
+
+# 95. APP SIGNATURE
+
+Where possible inspect APK certificate.
+
+Display:
+
+Certificate SHA-256
+
+Signer
+
+Signature scheme
+
+Compare installed signature with downloaded APK.
+
+Warn when signing identity changes.
+
+---
+
+# 96. TRUST MODEL
+
+Each source should have trust information.
+
+Example:
+
+Official GitHub Release
+
+F-Droid build
+
+Verified catalog
+
+Community source
+
+Unknown
+
+Display clearly.
+
+Never tell users an APK is "safe" merely because it is on GitHub.
+
+Use factual language.
+
+---
+
+# 97. PRIVACY
+
+The app should collect minimum data.
+
+Settings:
+
+Analytics:
+
+On/Off
+
+Crash reporting:
+
+On/Off
+
+Personalization:
+
+On/Off
+
+Feed recommendations:
+
+On/Off
+
+Usage history:
+
+On/Off
+
+Do not collect unnecessary device identifiers.
+
+---
+
+# 98. ACCESSIBILITY
+
+Support:
+
+Screen readers
+
+Content descriptions
+
+Minimum touch target
+
+Font scaling
+
+High contrast
+
+Reduced motion
+
+TalkBack
+
+Keyboard navigation where applicable
+
+Do not depend solely on color.
+
+---
+
+# 99. REDUCED MOTION
+
+Respect Android accessibility settings.
+
+If reduced motion is enabled:
+
+Disable:
+
+Large transitions
+
+Parallax
+
+Complex animations
+
+Mascot animation
+
+Keep functional feedback.
+
+---
+
+# 100. ERROR EXPERIENCE
+
+Never show ugly technical exceptions to normal users.
+
+Example:
+
+Instead of:
+
+HTTP 403 IOException...
+
+Show:
+
+"GitHub temporarily limited this request."
+
+Then:
+
+Retry
+
+Details
+
+For Expert Mode:
+
+Show technical error.
+
+---
+
+# 101. EMPTY STATES
+
+Create custom beautiful empty states:
+
+No apps
+
+No search results
+
+No downloads
+
+No updates
+
+No feed posts
+
+No bookmarks
+
+No installed apps
+
+Offline
+
+Shizuku unavailable
+
+Root unavailable
+
+No requests
+
+Each may use the original mascot.
+
+---
+
+# 102. LOADING EXPERIENCE
+
+Use skeleton loaders.
+
+Do not display blank screens.
+
+Cache-first rendering:
+
+Show existing data immediately.
+
+Then update.
+
+---
+
+# 103. PERFORMANCE TARGET
+
+Target:
+
+60 FPS minimum
+
+120 FPS where device supports it
+
+Fast cold start
+
+Low memory usage
+
+Low battery usage
+
+Minimal unnecessary network calls.
+
+Do not load all applications at startup.
+
+Use paging.
+
+---
+
+# 104. LARGE CATALOG
+
+The store may eventually contain:
+
+1,000+
+
+5,000+
+
+10,000+
+
+30,000+
+
+applications.
+
+Architecture must support this.
+
+Never use:
+
+LazyColumn with the entire catalog preloaded into memory.
+
+Use:
+
+Database
+
+Paging
+
+Indexes
+
+Search index
+
+Cached metadata
+
+---
+
+# 105. SEARCH INDEX
+
+For large catalogs implement local search.
+
+Potential:
+
+Room FTS
+
+SQLite FTS
+
+or another efficient local search mechanism.
+
+Index:
+
+Name
+
+Package
+
+Description
+
+Developer
+
+Repository
+
+Tags
+
+Category
+
+---
+
+# 106. STORE DATA MODEL
+
+Application:
+
+id
+
+name
+
+packageName
+
+slug
+
+developerId
+
+repositoryId
+
+description
+
+icon
+
+category
+
+tags
+
+license
+
+source
+
+shizukuRequired
+
+rootRequired
+
+adbRequired
+
+systemRequired
+
+recommended
+
+verified
+
+createdAt
+
+updatedAt
+
+---
+
+# 107. RELEASE DATA
+
+Release:
+
+id
+
+appId
+
+versionName
+
+versionCode
+
+channel
+
+preRelease
+
+draft
+
+publishedAt
+
+releaseUrl
+
+changelog
+
+assets
+
+---
+
+# 108. ASSET DATA
+
+Asset:
+
+id
+
+releaseId
+
+fileName
+
+downloadUrl
+
+size
+
+sha256
+
+abi
+
+architecture
+
+apkType
+
+mimeType
+
+isPreferred
+
+---
+
+# 109. FEED DATA MODEL
+
+Post:
+
+id
+
+userId
+
+repositoryId
+
+title
+
+description
+
+createdAt
+
+updatedAt
+
+deletedAt
+
+---
+
+Repost:
+
+id
+
+userId
+
+postId
+
+createdAt
+
+---
+
+Comment:
+
+id
+
+postId
+
+userId
+
+parentCommentId
+
+content
+
+createdAt
+
+updatedAt
+
+deletedAt
+
+---
+
+Like:
+
+userId
+
+postId
+
+createdAt
+
+---
+
+# 110. REQUEST DATA MODEL
+
+AppRequest:
+
+id
+
+userId
+
+githubUrl
+
+owner
+
+repository
+
+description
+
+status
+
+adminNote
+
+createdAt
+
+updatedAt
+
+---
+
+# 111. ADMIN
+
+Create secure admin functionality.
+
+Admin can:
+
+Add repository
+
+Remove repository
+
+Disable repository
+
+Approve request
+
+Reject request
+
+Edit metadata
+
+Mark recommended
+
+Change category
+
+Change release channel
+
+Set trust level
+
+Mark verified
+
+Trigger sync
+
+View sync logs
+
+View errors
+
+Moderate feed
+
+Ban abusive users
+
+Delete abusive content
+
+Admin access must be server-side authorized.
+
+Do not implement "admin mode" using a hidden password inside the APK.
+
+---
+
+# 112. ADMIN GITHUB WORKFLOW
+
+Prefer GitHub as the source of truth for catalog configuration.
+
+Example:
+
+config/apps.json
+
+Admin adds:
+
+{
+"name": "Example",
+"repository": "owner/example",
+"enabled": true
+}
+
+Then:
+
+Commit
+
+↓
+
+GitHub Actions validates
+
+↓
+
+Catalog sync
+
+↓
+
+ShizuStore sees new commit
+
+↓
+
+App appears automatically.
+
+---
+
+# 113. CATALOG CI VALIDATION
+
+GitHub Action must validate:
+
+JSON
+
+Schema
+
+Repository existence
+
+Duplicate repositories
+
+Duplicate slugs
+
+Invalid asset patterns
+
+Invalid categories
+
+Invalid channels
+
+Broken metadata
+
+Before accepting catalog changes.
+
+---
+
+# 114. AUTOMATIC SYNC ON EVERY APP OPEN
+
+Important:
+
+Every time ShizuStore is opened:
+
+1. Render cached data.
+2. Start background sync.
+3. Check catalog version.
+4. If changed, download only changed metadata.
+5. Parse changes.
+6. Update Room.
+7. Notify UI.
+8. Update visible sections.
+9. Schedule next sync.
+
+Never freeze the opening screen waiting for GitHub.
+
+---
+
+# 115. SYNC PROGRESS
+
+Normal users:
+
+Do not need detailed sync logs.
+
+Show subtle:
+
+"Updating catalog..."
+
+Expert mode:
+
+Show:
+
+Repositories checked
+
+Applications checked
+
+Applications updated
+
+Applications added
+
+Applications removed
+
+Errors
+
+Duration
+
+---
+
+# 116. STORE HOME AUTO REFRESH
+
+After sync:
+
+Home automatically refreshes.
+
+If:
+
+New app
+
+Show:
+
+"New"
+
+If:
+
+Updated app
+
+Show:
+
+"Updated"
+
+If:
+
+Recommended changed
+
+Update section.
+
+---
+
+# 117. APP UPDATE AUTOMATION
+
+For every catalog item:
+
+Check installed version.
+
+If newer:
+
+Generate update entry.
+
+If prerelease disabled:
+
+Ignore prerelease.
+
+If prerelease enabled:
+
+Include appropriate channel.
+
+---
+
+# 118. SMART NOTIFICATIONS
+
+Do not spam users.
+
+Notification settings:
+
+Critical updates
+
+Normal updates
+
+Beta updates
+
+Dev updates
+
+New apps
+
+Feed
+
+Requests
+
+Downloads
+
+Installations
+
+Repository sync
+
+All can be controlled.
+
+---
+
+# 119. HOME PERSONALIZATION
+
+Users can reorder sections.
+
+Example:
+
+Move:
+
+Shizuku Apps
+
+above:
+
+Popular Apps
+
+Allow:
+
+Hide section
+
+Show section
+
+Reorder.
+
+---
+
+# 120. FAVORITES
+
+Users can bookmark apps.
+
+Bookmark data must persist locally.
+
+If authenticated:
+
+Sync to account.
+
+---
+
+# 121. SHARE
+
+Share application:
+
+Name
+
+Version
+
+Description
+
+Store deep link
+
+Repository
+
+Example concept:
+
+shizustore://app/<slug>
+
+Also support HTTPS deep links.
+
+---
+
+# 122. DEEP LINKS
+
+Support:
+
+App detail
+
+Category
+
+Feed post
+
+Repository
+
+Request
+
+Profile
+
+Version
+
+---
+
+# 123. SECURITY OF DEEP LINKS
+
+Validate all parameters.
+
+Never trust:
+
+package names
+
+file paths
+
+URLs
+
+IDs
+
+from external intents.
+
+---
+
+# 124. IMPORT / EXPORT
+
+Expert users should be able to export:
+
+Bookmarks
+
+Settings
+
+Download history
+
+App preferences
+
+Feed bookmarks
+
+as JSON.
+
+Import should validate schema.
+
+---
+
+# 125. THEMING
+
+Support:
+
+Dynamic Material You
+
+Yellow ShizuStore accent
+
+Blue
+
+Purple
+
+Green
+
+Orange
+
+System dynamic
+
+Custom accent
+
+Dark
+
+Light
+
+AMOLED
+
+Ambient
+
+---
+
+# 126. VISUAL IDENTITY
+
+Primary visual identity:
+
+White/light Material surfaces
+
+Warm yellow accent
+
+Black/dark text
+
+Soft gray secondary text
+
+Rounded cards
+
+Subtle shadows
+
+Cute Android/Shizuku mascot
+
+Modern icons
+
+Avoid excessive gradients.
+
+---
+
+# 127. DARK MODE
+
+Dark mode should be designed independently.
+
+Do not simply invert colors.
+
+Use:
+
+Dark surfaces
+
+Proper elevation
+
+Readable text
+
+Reduced brightness
+
+Accessible contrast.
+
+---
+
+# 128. ANIMATION SYSTEM
+
+Create centralized animation tokens.
+
+Examples:
+
+Fast:
+
+120ms
+
+Normal:
+
+200ms
+
+Slow:
+
+300ms
+
+Spring:
+
+appropriate physics.
+
+Avoid random animation timings throughout code.
+
+---
+
+# 129. MICRO-INTERACTIONS
+
+Examples:
+
+Like:
+
+small heart animation
+
+Bookmark:
+
+icon morph
+
+Install:
+
+button transforms to progress
+
+Download:
+
+progress ring
+
+Update:
+
+button pulse once
+
+Sync:
+
+small refresh animation
+
+Success:
+
+check animation
+
+Error:
+
+subtle shake
+
+Do not make UI distracting.
+
+---
+
+# 130. NOTIFICATION UI
+
+Use modern Android notification design.
+
+For downloads:
+
+App icon
+
+App name
+
+Version
+
+Progress
+
+Speed
+
+Action buttons
+
+For updates:
+
+Application
+
+Current version
+
+New version
+
+Update button
+
+---
+
+# 131. APP INSTALL HISTORY
+
+Store:
+
+Application
+
+Version
+
+Date
+
+Installer
+
+Result
+
+Source
+
+APK hash
+
+Installation duration
+
+In expert mode.
+
+---
+
+# 132. DOWNLOAD HISTORY
+
+Show:
+
+Downloaded
+
+Installed
+
+Failed
+
+Deleted
+
+Source
+
+Version
+
+Size
+
+Date
+
+---
+
+# 133. STORAGE MANAGEMENT
+
+Settings:
+
+Cache size
+
+Downloaded APKs
+
+Clear cache
+
+Clear old downloads
+
+Keep APKs
+
+Delete after install
+
+Storage warning.
+
+---
+
+# 134. NETWORK SETTINGS
+
+Options:
+
+Wi-Fi only
+
+Mobile data
+
+Ask before mobile data
+
+Download concurrency
+
+Maximum download size warning
+
+---
+
+# 135. SOURCE FALLBACK
+
+If GitHub release unavailable:
+
+Try configured fallback source.
+
+Do not silently switch to an untrusted source.
+
+Display:
+
+"Primary source unavailable. Fallback source available."
+
+Ask user where necessary.
+
+---
+
+# 136. REPOSITORY HEALTH
+
+Show:
+
+Healthy
+
+Active
+
+Slow
+
+Unavailable
+
+No releases
+
+No APK
+
+Archived
+
+when detectable.
+
+---
+
+# 137. ARCHIVED REPOSITORIES
+
+If repository is archived:
+
+Show:
+
+Archived repository
+
+Last update
+
+Warning.
+
+Do not automatically remove it.
+
+---
+
+# 138. DELETED REPOSITORIES
+
+If repository disappears:
+
+Mark:
+
+Source unavailable.
+
+Keep cached metadata for a limited period.
+
+Do not immediately delete user-installed app records.
+
+---
+
+# 139. LICENSE
+
+Display repository license.
+
+Examples:
+
+MIT
+
+Apache-2.0
+
+GPL
+
+AGPL
+
+MPL
+
+Unknown
+
+Do not invent license.
+
+---
+
+# 140. OPEN SOURCE VALIDATION
+
+Show:
+
+Open source
+
+if source repository is available and license/repository evidence supports it.
+
+Otherwise:
+
+Source available
+
+instead of falsely claiming open source.
+
+---
+
+# 141. ADMIN RECOMMENDATION
+
+Admin can mark:
+
+Recommended
+
+Featured
+
+New
+
+Trending
+
+Official
+
+Verified
+
+These should be explicit metadata fields.
+
+---
+
+# 142. COMMUNITY SIGNALS
+
+Users can:
+
+Like
+
+Bookmark
+
+Repost
+
+Comment
+
+Share
+
+Report
+
+Do not treat likes as proof of security.
+
+---
+
+# 143. FEED REPOSITORY CARD
+
+Every feed repository card should have:
+
+Repository icon or generated fallback
+
+Owner
+
+Repo name
+
+Description
+
+Stars
+
+Forks
+
+Language
+
+License
+
+Updated
+
+Latest release
+
+Open in GitHub
+
+View in ShizuStore
+
+---
+
+# 144. POST EDITING
+
+When editing:
+
+Show original repository.
+
+Validate GitHub URL again.
+
+Do not allow changing ownership to another user's post.
+
+Track:
+
+updatedAt.
+
+---
+
+# 145. DELETION
+
+Use soft deletion for social content where appropriate.
+
+Post deleted:
+
+"Post deleted."
+
+Admin can restore if needed.
+
+---
+
+# 146. MODERATION
+
+Admin can:
+
+Hide
+
+Restore
+
+Delete
+
+Lock comments
+
+Mark spam
+
+Suspend user
+
+Remove repost
+
+---
+
+# 147. RATE LIMITS
+
+Protect:
+
+Posts
+
+Comments
+
+Likes
+
+Reposts
+
+Requests
+
+Search
+
+API
+
+from abuse.
+
+---
+
+# 148. ANTI-SPAM
+
+Basic protections:
+
+Rate limits
+
+Duplicate detection
+
+GitHub validation
+
+Cooldown
+
+Maximum post frequency
+
+Maximum comment frequency
+
+---
+
+# 149. PROFILE PRIVACY
+
+Settings:
+
+Public profile
+
+Private profile
+
+Show activity
+
+Show liked posts
+
+Show reposts
+
+---
+
+# 150. ADMIN EMAIL SECURITY
+
+Email should contain:
+
+New request
+
+User
+
+GitHub repository
+
+Reason
+
+Request ID
+
+Direct admin review link
+
+Never include private credentials.
+
+---
+
+# 151. BACKEND
+
+If social features require backend, use a scalable backend.
+
+Possible stack:
+
+Kotlin/Spring Boot
+
+Node.js
+
+Supabase
+
+Firebase
+
+PostgreSQL
+
+Choose the simplest maintainable architecture.
+
+The Android client must not contain privileged backend credentials.
+
+---
+
+# 152. API
+
+Recommended endpoints conceptually:
+
+GET /apps
+
+GET /apps/{id}
+
+GET /apps/{id}/releases
+
+GET /categories
+
+GET /search
+
+GET /feed
+
+POST /posts
+
+PATCH /posts/{id}
+
+DELETE /posts/{id}
+
+POST /posts/{id}/like
+
+POST /posts/{id}/repost
+
+POST /posts/{id}/comments
+
+PATCH /comments/{id}
+
+DELETE /comments/{id}
+
+POST /requests
+
+GET /requests
+
+POST /reports
+
+---
+
+# 153. AUTHORIZATION
+
+Server-side:
+
+Users can modify only their own:
+
+Posts
+
+Comments
+
+Profile
+
+Requests
+
+Admins can moderate.
+
+Never trust client-provided user IDs.
+
+---
+
+# 154. API ERROR FORMAT
+
+Use consistent errors.
+
+Example:
+
+code
+
+message
+
+details
+
+requestId
+
+Do not expose stack traces.
+
+---
+
+# 155. DATABASE MIGRATIONS
+
+Use migrations.
+
+Never destroy production data during updates.
+
+---
+
+# 156. OBSERVABILITY
+
+Add:
+
+Crash reporting
+
+Structured logging
+
+Performance monitoring
+
+Sync metrics
+
+Download failures
+
+Installer failures
+
+Do not log:
+
+Tokens
+
+Passwords
+
+Private user data
+
+APK contents
+
+Sensitive paths unnecessarily.
+
+---
+
+# 157. LOGGING
+
+Normal:
+
+Minimal.
+
+Debug build:
+
+Detailed.
+
+Expert Mode:
+
+Optional diagnostic information.
+
+---
+
+# 158. BUILD VARIANTS
+
+Create:
+
+debug
+
+release
+
+possibly:
+
+benchmark
+
+internal
+
+staging
+
+Production release must disable debug logging.
+
+---
+
+# 159. MINIMUM ANDROID VERSION
+
+Choose a sensible modern Android minimum version.
+
+Prefer broad compatibility while still supporting modern PackageInstaller and Material features.
+
+Document the selected minSdk.
+
+---
+
+# 160. ANDROID PERMISSIONS
+
+Request only permissions actually required.
+
+Do not request unnecessary permissions.
+
+Explain sensitive permissions before requesting where appropriate.
+
+---
+
+# 161. FILE ACCESS
+
+Use modern Android Storage Access Framework and scoped storage.
+
+Do not request MANAGE_EXTERNAL_STORAGE unless absolutely necessary.
+
+---
+
+# 162. INSTALL UNKNOWN APPS
+
+If system requires:
+
+REQUEST_INSTALL_PACKAGES
+
+Explain why.
+
+Open system setting only when needed.
+
+Do not attempt to bypass Android restrictions.
+
+---
+
+# 163. SHIZUKU DEPENDENCY
+
+Use official supported Shizuku APIs.
+
+Isolate Shizuku implementation inside:
+
+core-shizuku
+
+So the rest of the application does not directly depend on implementation details.
+
+---
+
+# 164. ROOT ABSTRACTION
+
+Create:
+
+RootManager
+
+interface.
+
+Implementation:
+
+RootDetector
+
+RootInstaller
+
+RootCommandExecutor
+
+Never scatter shell commands across UI.
+
+---
+
+# 165. INSTALLER ABSTRACTION
+
+Create:
+
+Installer interface.
+
+Implement:
+
+ShizukuInstaller
+
+SessionInstaller
+
+SystemInstaller
+
+RootInstaller
+
+CustomInstaller
+
+The UI chooses the installer.
+
+---
+
+# 166. INSTALLER SELECTION LOGIC
+
+Automatically recommend the best available method.
+
+Example:
+
+Shizuku running:
+
+Recommend Shizuku.
+
+No Shizuku:
+
+Recommend Session/System Installer.
+
+Root available:
+
+Show Root option.
+
+Custom installer:
+
+Always available when supported.
+
+But never hide available methods in Expert Mode.
+
+---
+
+# 167. INSTALLER SETTINGS
+
+Allow:
+
+Default installer
+
+Ask every time
+
+Prefer Shizuku
+
+Prefer system installer
+
+Prefer session installer
+
+Prefer root
+
+Custom
+
+---
+
+# 168. BEGINNER INSTALL FLOW
+
+Beginner sees:
+
+Install
+
+↓
+
+Choose recommended method
+
+↓
+
+Confirm
+
+↓
+
+Install
+
+Advanced details hidden.
+
+Expert sees:
+
+All installer methods
+
+All metadata
+
+All warnings
+
+---
+
+# 169. APP STORE HOME PERSONALITY
+
+Use friendly microcopy.
+
+Examples:
+
+"Ready to explore?"
+
+"Your Android, your rules."
+
+"Powerful apps. No unnecessary hassle."
+
+"Shizuku is ready."
+
+"Your apps are up to date."
+
+But don't overdo slogans.
+
+---
+
+# 170. ERROR PERSONALITY
+
+Instead of robotic errors:
+
+"Oops — GitHub is taking a breather."
+
+Then technical explanation below.
+
+For security errors:
+
+"Installation stopped"
+
+Clear serious explanation.
+
+---
+
+# 171. FIRST RUN
+
+First launch:
+
+Welcome
+
+↓
+
+Choose theme
+
+↓
+
+Explain ShizuStore
+
+↓
+
+Optional Shizuku setup
+
+↓
+
+Choose release channel
+
+↓
+
+Privacy choices
+
+↓
+
+Finish
+
+Do not force account creation.
+
+---
+
+# 172. ONBOARDING
+
+Show:
+
+Open-source apps
+
+Automatic updates
+
+Shizuku
+
+Root
+
+Multiple installers
+
+Community feed
+
+Repository transparency
+
+---
+
+# 173. STORE SOURCES PAGE
+
+Create:
+
+"Sources"
+
+Show every source currently configured.
+
+For each:
+
+Name
+
+URL
+
+Number of applications
+
+Last sync
+
+Status
+
+Updated
+
+Error count
+
+---
+
+# 174. SOURCE DETAILS
+
+Click source:
+
+Repository
+
+Owner
+
+Website
+
+License
+
+Apps
+
+Last sync
+
+Release strategy
+
+Sync history
+
+---
+
+# 175. SOURCE MANAGEMENT
+
+Expert/Admin:
+
+Enable/disable source.
+
+Never delete primary source accidentally.
+
+Confirm destructive operations.
+
+---
+
+# 176. IMPORT SOURCE
+
+Expert users can add supported catalogs.
+
+Validate schema.
+
+Preview applications.
+
+Confirm import.
+
+---
+
+# 177. DATA REFRESH
+
+Pull-to-refresh should:
+
+Refresh catalog
+
+Not redownload every APK.
+
+---
+
+# 178. CACHE STRATEGY
+
+Cache:
+
+Icons
+
+Screenshots
+
+Metadata
+
+Repository API responses
+
+Release metadata
+
+Use disk cache.
+
+Limit size.
+
+Clean old cache.
+
+---
+
+# 179. IMAGE LOADING
+
+Use Coil.
+
+Support:
+
+Placeholder
+
+Error image
+
+Memory cache
+
+Disk cache
+
+Crossfade
+
+Proper sizing.
+
+---
+
+# 180. LOCALIZATION
+
+Prepare for:
+
+English
+
+Hindi
+
+Other languages later.
+
+Do not hardcode user-facing strings inside composables.
+
+Use resources/localization architecture.
+
+---
+
+# 181. DATE / SIZE FORMATTING
+
+Use locale-aware:
+
+Dates
+
+Time
+
+Size
+
+Number
+
+Downloads
+
+Stars
+
+---
+
+# 182. VERSION COMPARISON
+
+Implement correct semantic/version comparison.
+
+Do not compare strings blindly.
+
+Support:
+
+1.2.10 > 1.2.9
+
+Beta
+
+RC
+
+Dev
+
+Nightly
+
+Version codes where available.
+
+---
+
+# 183. UPDATE SAFETY
+
+Before update:
+
+Check installed package.
+
+Check signing certificate if possible.
+
+Check version.
+
+Check architecture.
+
+Check source.
+
+Then install.
+
+---
+
+# 184. FAILED UPDATE
+
+If update fails:
+
+Keep current application untouched where possible.
+
+Show:
+
+Update failed.
+
+Reason.
+
+Retry.
+
+Alternative installer.
+
+---
+
+# 185. DOWNLOAD RESUME
+
+Use HTTP range requests where supported.
+
+Persist download state.
+
+---
+
+# 186. BACKGROUND INSTALLATION
+
+Respect Android restrictions.
+
+If background installation is impossible:
+
+Notify user and continue through supported system UI.
+
+Never claim unsupported background installation.
+
+---
+
+# 187. SYSTEM RESTRICTIONS
+
+The app must clearly distinguish:
+
+What Android allows normally
+
+What Shizuku enables
+
+What root enables
+
+What requires user confirmation.
+
+Never pretend Shizuku is root.
+
+Never pretend root is required when it isn't.
+
+---
+
+# 188. SECURITY LABELS
+
+Use:
+
+Verified source
+
+Community source
+
+Unknown source
+
+Archive
+
+Experimental
+
+Clearly.
+
+---
+
+# 189. FEED LINK PREVIEW
+
+When user pastes GitHub URL:
+
+Automatically fetch preview.
+
+Show:
+
+Repo icon
+
+Name
+
+Description
+
+Stars
+
+Forks
+
+Language
+
+Updated
+
+Release
+
+User can edit title/description.
+
+---
+
+# 190. FEED POST CREATION FLOW
+
+Create post:
+
+1. Paste GitHub URL
+2. Validate
+3. Fetch repository
+4. Preview
+5. Add comment/opinion
+6. Choose category
+7. Publish
+
+---
+
+# 191. COMMENT EDIT
+
+Show:
+
+Edited
+
+timestamp
+
+Edit/delete menu for owner.
+
+---
+
+# 192. REPOST
+
+When reposting:
+
+Optional comment.
+
+Example:
+
+"I've been using this tool for months. Very useful."
+
+Then:
+
+Repost.
+
+---
+
+# 193. SOCIAL NOTIFICATIONS
+
+Notify:
+
+Someone liked your post
+
+Someone reposted
+
+Someone commented
+
+Someone replied
+
+Request status changed
+
+Repository request approved
+
+Do not spam.
+
+---
+
+# 194. USER SEARCH
+
+Allow search:
+
+Users
+
+Repositories
+
+Posts
+
+Apps
+
+---
+
+# 195. FOLLOW
+
+Users can follow:
+
+Users
+
+Topics
+
+Developers
+
+Repositories
+
+Categories
+
+---
+
+# 196. DEVELOPER PROFILE
+
+Repository developers can have:
+
+Name
+
+Avatar
+
+GitHub
+
+Repositories
+
+Applications
+
+Followers
+
+Stars across projects where available.
+
+---
+
+# 197. APPLICATION DEVELOPER PAGE
+
+Click developer:
+
+Applications
+
+Repository
+
+GitHub
+
+Website
+
+License
+
+---
+
+# 198. APP RELATIONSHIPS
+
+Show:
+
+Similar apps
+
+Same developer
+
+Same category
+
+Requires Shizuku
+
+Alternative installers
+
+Alternative versions
+
+---
+
+# 199. INSTALL CONFIRMATION
+
+Before installation:
+
+Application
+
+Version
+
+Size
+
+Source
+
+Installer
+
+Permissions summary
+
+Security status
+
+Install button
+
+Cancel
+
+Expert:
+
+Full technical details.
+
+---
+
+# 200. DANGEROUS INSTALL WARNING
+
+For root/custom/unknown source:
+
+Show explicit warning.
+
+Require confirmation.
+
+Never use deceptive buttons.
+
+---
+
+# 201. APK SOURCE URL
+
+Show actual source in Expert Mode.
+
+Normal user:
+
+"GitHub Releases"
+
+Expert:
+
+Full URL.
+
+---
+
+# 202. APP REPORTING
+
+Users can report:
+
+Broken APK
+
+Wrong metadata
+
+Malicious content
+
+Wrong version
+
+Broken repository
+
+Copyright issue
+
+Spam
+
+Security issue
+
+Admin reviews reports.
+
+---
+
+# 203. APP STORE QUALITY
+
+The app must feel polished enough for public release.
+
+Before final completion:
+
+No placeholder screens.
+
+No TODO implementation.
+
+No fake API.
+
+No hardcoded demo data.
+
+No broken navigation.
+
+No missing loading states.
+
+No unhandled crashes.
+
+---
+
+# 204. REAL DATA
+
+Use real repository data.
+
+Do not populate the store with fake applications.
+
+If API unavailable during development:
+
+Use clearly marked local fixtures only for tests.
+
+Production must use real sources.
+
+---
+
+# 205. README
+
+Create complete README:
+
+What is ShizuStore?
+
+Features
+
+Architecture
+
+Screenshots
+
+Setup
+
+Build
+
+GitHub Actions
+
+Catalog
+
+Shizuku
+
+Root
+
+Installers
+
+Feed
+
+Backend
+
+Environment variables
+
+Security
+
+Contribution
+
+License
+
+---
+
+# 206. CONTRIBUTING
+
+Create CONTRIBUTING.md.
+
+Explain:
+
+Code style
+
+Branching
+
+PR
+
+Catalog entry
+
+Testing
+
+UI contribution
+
+Translation
+
+Security reporting
+
+---
+
+# 207. SECURITY POLICY
+
+Create SECURITY.md.
+
+Explain:
+
+Security vulnerability reporting
+
+APK verification
+
+Source trust
+
+Admin security
+
+Backend security
+
+---
+
+# 208. CODE QUALITY
+
+Use:
+
+Kotlin idioms
+
+Immutable state
+
+SOLID
+
+Clean architecture
+
+Dependency injection
+
+Prefer Hilt/Koin where appropriate.
+
+Avoid:
+
+God classes
+
+Massive composables
+
+Global mutable state
+
+Hardcoded URLs
+
+Hardcoded secrets
+
+Hardcoded application catalogs
+
+---
+
+# 209. DOCUMENTATION
+
+Document complicated systems:
+
+Installer architecture
+
+Shizuku architecture
+
+Sync engine
+
+Catalog schema
+
+Feed architecture
+
+Authentication
+
+Admin workflow
+
+---
+
+# 210. CI QUALITY GATES
+
+PR must pass:
+
+Build
+
+Unit tests
+
+UI tests where available
+
+Lint
+
+Static analysis
+
+Catalog validation
+
+Dependency check
+
+Formatting
+
+---
+
+# 211. DEPENDENCY MANAGEMENT
+
+Keep dependencies current but stable.
+
+Avoid unnecessary libraries.
+
+Use version catalog:
+
+libs.versions.toml
+
+---
+
+# 212. CRASH HANDLING
+
+Production must not crash because:
+
+GitHub unavailable
+
+Repository malformed
+
+APK missing
+
+Network timeout
+
+Shizuku unavailable
+
+Root unavailable
+
+Permission denied
+
+Unsupported Android
+
+Storage full
+
+Download interrupted
+
+---
+
+# 213. STORAGE FULL
+
+If storage becomes full:
+
+Stop download safely.
+
+Notify user.
+
+Do not corrupt database.
+
+Allow retry after freeing space.
+
+---
+
+# 214. NETWORK FAILURE
+
+Show cached data.
+
+Retry gracefully.
+
+Use exponential backoff.
+
+---
+
+# 215. GITHUB FAILURE
+
+If GitHub rate limited:
+
+Use cache.
+
+Show status.
+
+Retry later.
+
+Never repeatedly hammer API.
+
+---
+
+# 216. CATALOG VERSIONING
+
+Catalog should have:
+
+catalogVersion
+
+generatedAt
+
+sourceCommit
+
+schemaVersion
+
+Use this to detect changes quickly.
+
+---
+
+# 217. CATALOG DELTA UPDATE
+
+If possible:
+
+Download delta instead of complete catalog.
+
+For example:
+
+Added apps
+
+Updated apps
+
+Removed apps
+
+Updated releases
+
+---
+
+# 218. STORE STARTUP
+
+Startup sequence:
+
+Splash
+
+↓
+
+Initialize database
+
+↓
+
+Load cached Home
+
+↓
+
+Render UI
+
+↓
+
+Start sync
+
+Never wait for network.
+
+---
+
+# 219. SPLASH
+
+Minimal.
+
+Show ShizuStore mascot/logo.
+
+Small animation.
+
+No long splash screen.
+
+---
+
+# 220. APP ICON
+
+Create original ShizuStore icon.
+
+Concept:
+
+Cute Android-inspired character
+
+Yellow lock/shield/store symbol
+
+Simple silhouette
+
+Works at:
+
+Launcher
+
+Notification
+
+Store cards
+
+Adaptive icon
+
+---
+
+# 221. WIDGETS
+
+Optional future-ready architecture for:
+
+Updates
+
+Shizuku status
+
+Downloads
+
+---
+
+# 222. QUICK SETTINGS
+
+Optional:
+
+Shizuku status
+
+Updates
+
+Downloads
+
+---
+
+# 223. ANDROID SHORTCUTS
+
+Launcher shortcuts:
+
+Search
+
+Updates
+
+Downloads
+
+Shizuku
+
+Request app
+
+---
+
+# 224. DEVELOPER TOOLS
+
+Expert mode can expose diagnostics:
+
+Database status
+
+Sync status
+
+Network
+
+Cache
+
+Installer status
+
+Shizuku
+
+Root
+
+PackageInstaller
+
+---
+
+# 225. DEBUG SCREEN
+
+Debug builds:
+
+Logs
+
+Sync
+
+Clear database
+
+Reset onboarding
+
+Fake network
+
+Installer test
+
+Do not expose in production.
+
+---
+
+# 226. AUTOMATED UI VERIFICATION
+
+Use screenshot tests or UI tests.
+
+Verify:
+
+Home
+
+Search
+
+Categories
+
+Details
+
+Install
+
+Updates
+
+Library
+
+Feed
+
+Settings
+
+---
+
+# 227. PERFORMANCE TEST
+
+Benchmark:
+
+Startup
+
+Search
+
+Scrolling
+
+App detail
+
+Database query
+
+Sync
+
+Download
+
+---
+
+# 228. FINAL APK
+
+The project must produce:
+
+app-debug.apk
+
+app-release.apk
+
+The APK should be uploaded as GitHub Actions artifact.
+
+If signing configured:
+
+signed release APK.
+
+If signing not configured:
+
+unsigned release artifact clearly marked.
+
+---
+
+# 229. FINAL RELEASE CHECKLIST
+
+Before declaring the project complete:
+
+* Build succeeds
+* APK generated
+* App launches
+* Navigation works
+* Search works
+* Catalog sync works
+* GitHub data works
+* Application details work
+* Download works
+* Installer selection works
+* Session installer works
+* System installer works
+* Shizuku detection works
+* Shizuku installation works
+* Root detection works
+* Root installer abstraction works
+* Custom installer works
+* Version detection works
+* Updates work
+* Pre-release channels work
+* Expert mode works
+* Permissions display works
+* APK verification works
+* Feed works
+* Like works
+* Repost works
+* Comment CRUD works
+* Post CRUD works
+* GitHub URL validation works
+* App request works
+* Admin notification workflow works
+* Catalog automatically synchronizes
+* Background sync works
+* Offline cache works
+* Notifications work
+* Haptics work
+* Sounds work
+* Ambient mode works
+* Dark mode works
+* Accessibility works
+* CI works
+* Tests pass
+* No secrets committed
+* No fake production data
+* README complete
+* SECURITY.md complete
+* CONTRIBUTING.md complete
+
+---
+
+# 230. IMPORTANT ENGINEERING RULE
+
+Do not implement everything as one giant change.
+
+Work incrementally.
+
+First inspect the existing repository.
+
+Then create an implementation plan.
+
+Then implement foundation.
+
+Then data layer.
+
+Then UI.
+
+Then catalog synchronization.
+
+Then installation system.
+
+Then Shizuku/root.
+
+Then updates.
+
+Then feed.
+
+Then request/admin workflow.
+
+Then polish.
+
+After every major phase:
+
+Build
+
+Test
+
+Fix
+
+Continue.
+
+---
+
+# 231. EXISTING REPOSITORY PRESERVATION
+
+If the existing project already contains useful:
+
+catalog files
+
+scripts
+
+GitHub Actions
+
+configuration
+
+metadata
+
+documentation
+
+parsers
+
+release logic
+
+Do not unnecessarily rewrite them.
+
+Reuse and improve them.
+
+Maintain backward compatibility where practical.
+
+---
+
+# 232. CATALOG MIGRATION
+
+Read the existing:
+
+config/apps.json
+
+and all relevant repository configuration files.
+
+Automatically import the existing application list.
+
+Do not lose any existing applications.
+
+If an existing field is unknown:
+
+Preserve it.
+
+---
+
+# 233. ALL PROVIDED SOURCES
+
+The application must integrate the provided store/reference ecosystem into the architecture.
+
+Do not merely put links to these stores inside a WebView.
+
+Build a unified native experience.
+
+Each source should have a connector/adapter.
+
+Example:
+
+GitHubSourceAdapter
+
+FDroidSourceAdapter
+
+OpenAPKSourceAdapter
+
+ShizuStoreSourceAdapter
+
+ZapStoreSourceAdapter
+
+KomiStoreSourceAdapter
+
+OtherSourceAdapter
+
+---
+
+# 234. SOURCE ADAPTER INTERFACE
+
+Conceptually:
+
+SourceAdapter
+
+* getApplications()
+* getApplication()
+* getReleases()
+* getLatestRelease()
+* search()
+* sync()
+* getMetadata()
+
+Each adapter should be isolated.
+
+If one source breaks, the rest continue working.
+
+---
+
+# 235. SOURCE CAPABILITIES
+
+Each source can declare:
+
+supportsSearch
+
+supportsReleases
+
+supportsScreenshots
+
+supportsChecksum
+
+supportsMetadata
+
+supportsInstall
+
+supportsPreRelease
+
+supportsArchitecture
+
+supportsUpdates
+
+The UI should adapt accordingly.
+
+---
+
+# 236. SOURCE ATTRIBUTION
+
+Always respect source licenses.
+
+Display source attribution where required.
+
+Do not remove original license information.
+
+---
+
+# 237. NO WEBVIEW STORE
+
+Do not simply embed:
+
+F-Droid
+
+GitHub
+
+OpenAPK
+
+or other stores in WebViews.
+
+The purpose is a unified native store.
+
+External source can still be opened in browser when user chooses "Open Source".
+
+---
+
+# 238. UPDATE SOURCE PRIORITY
+
+For each application:
+
+Prefer official upstream release when appropriate.
+
+Use catalog configuration to determine source.
+
+Do not arbitrarily select APK mirrors.
+
+---
+
+# 239. INSTALLER SOURCE PAGE
+
+This must be a dedicated beautiful page.
+
+Title:
+
+"Choose how to install"
+
+Cards:
+
+Shizuku Installer
+
+Session Installer
+
+System Installer
+
+Root Installer
+
+Custom Installer
+
+Each card:
+
+Icon
+
+Title
+
+Description
+
+Availability
+
+Security note
+
+Recommended badge
+
+Radio selection
+
+Continue button.
+
+---
+
+# 240. INSTALLER PAGE DYNAMIC STATE
+
+If Shizuku running:
+
+Shizuku:
+
+Available
+
+If not:
+
+Shizuku:
+
+Setup required
+
+If root unavailable:
+
+Root:
+
+Unavailable
+
+If system installer:
+
+Available
+
+The page updates dynamically.
+
+---
+
+# 241. USER EXPERIENCE RULE
+
+Never make beginners understand:
+
+APK
+
+ABI
+
+PackageInstaller
+
+Shizuku binder
+
+Root shell
+
+before they can install an app.
+
+Beginner flow should be:
+
+Install
+
+↓
+
+Recommended installer
+
+↓
+
+Confirm
+
+↓
+
+Done.
+
+Expert mode reveals complexity.
+
+---
+
+# 242. POWER USER EXPERIENCE
+
+Expert users should have:
+
+All versions
+
+All architectures
+
+Install method selection
+
+APK hashes
+
+Signature information
+
+Install flags
+
+Source selection
+
+Pre-release channels
+
+Root
+
+Shizuku
+
+Custom installer
+
+Rollback
+
+Debug information
+
+---
+
+# 243. APP STORE SEARCH RESULT
+
+Example:
+
+ZArchiver
+
+ZDevs
+
+4.6 ★
+
+Tools
+
+3.2 MB
+
+Shizuku
+
+Open Source
+
+Install
+
+---
+
+# 244. APP UPDATE RESULT
+
+Example:
+
+ZArchiver
+
+1.0.9 → 1.0.10
+
+3.2 MB
+
+Updated today
+
+Recommended
+
+Update
+
+---
+
+# 245. FEED RESULT
+
+Example:
+
+"Great open-source Android tool"
+
+@krishna
+
+Repository:
+
+owner/project
+
+★ 2.4k
+
+Fork 180
+
+Updated 2 days ago
+
+Like
+
+Comment
+
+Repost
+
+Bookmark
+
+---
+
+# 246. REQUEST RESULT
+
+Example:
+
+Request:
+
+"Please add this open-source application."
+
+Repository:
+
+github.com/owner/repo
+
+Status:
+
+Pending
+
+---
+
+# 247. UI QUALITY BAR
+
+The UI should look like a combination of:
+
+Modern Google Play usability
+
+Material 3
+
+Premium FOSS application
+
+Cute anime personality
+
+Professional power-user tooling
+
+Do not make it look like:
+
+A generic CRUD app
+
+A GitHub clone
+
+A basic F-Droid clone
+
+A website wrapped inside Android.
+
+---
+
+# 248. FINAL PRODUCT IDENTITY
+
+Name:
+
+ShizuStore
+
+Possible tagline:
+
+"Open-source Android apps, made simple."
+
+Alternative:
+
+"Discover. Install. Explore."
+
+The exact final tagline can be refined during implementation.
+
+---
+
+# 249. IMPLEMENTATION PRIORITY
+
+Priority P0:
+
+Application catalog
+
+Search
+
+Details
+
+Downloads
+
+Installers
+
+Shizuku
+
+Session Installer
+
+System Installer
+
+Updates
+
+Automatic synchronization
+
+P1:
+
+Root
+
+Expert mode
+
+Pre-release channels
+
+Permissions
+
+Security verification
+
+Library
+
+P2:
+
+Feed
+
+Users
+
+Likes
+
+Reposts
+
+Comments
+
+Requests
+
+Admin workflow
+
+P3:
+
+Advanced personalization
+
+Ambient UI
+
+Mascot animations
+
+Advanced analytics
+
+Widgets
+
+Additional sources
+
+---
+
+# 250. DO NOT STOP AT DESIGN
+
+You are being asked to BUILD the application.
+
+Do not respond with only:
+
+"Here is a plan."
+
+Do not generate only mockups.
+
+Do not generate only placeholder screens.
+
+Actually implement the project.
+
+Create:
+
+source code
+
+resources
+
+database
+
+repositories
+
+network layer
+
+sync engine
+
+installer layer
+
+Shizuku integration
+
+root abstraction
+
+download manager
+
+UI
+
+navigation
+
+tests
+
+GitHub Actions
+
+documentation
+
+catalog validation
+
+APK build workflow
+
+---
+
+# 251. AUTONOMOUS DEVELOPMENT
+
+When you encounter an implementation choice:
+
+Prefer the safest maintainable solution.
+
+Do not ask unnecessary questions.
+
+Inspect the repository first.
+
+Use existing code when appropriate.
+
+Make reasonable engineering decisions.
+
+Document major architectural decisions.
+
+If a requested feature cannot be implemented due to Android security restrictions:
+
+Implement the closest legitimate Android-supported mechanism.
+
+Clearly document the limitation.
+
+Never bypass Android security.
+
+---
+
+# 252. FINAL INSTRUCTION TO GITHUB AI
+
+Act as the actual engineering team responsible for shipping ShizuStore.
+
+Inspect the complete repository.
+
+Understand the existing catalog.
+
+Design the architecture.
+
+Implement the application incrementally.
+
+Keep the application production quality.
+
+Use real data.
+
+Preserve existing catalog entries.
+
+Automatically synchronize repository changes.
+
+Support stable, recommended, beta, dev, nightly, experimental, and pre-release versions.
+
+Support Shizuku.
+
+Support root where available.
+
+Support Android Session Installer.
+
+Support System Installer.
+
+Support Custom Installer.
+
+Provide beginner mode and expert mode.
+
+Build a beautiful Material 3 Play Store-inspired UI with an original cute anime identity.
+
+Implement ambient-light adaptive UI.
+
+Implement smooth animations.
+
+Implement gestures.
+
+Implement haptic feedback.
+
+Implement optional sound feedback.
+
+Implement notifications.
+
+Implement downloads.
+
+Implement updates.
+
+Implement repository synchronization.
+
+Implement GitHub catalog management.
+
+Implement app request workflow.
+
+Implement secure admin email notification workflow.
+
+Implement community feed.
+
+Implement posts.
+
+Implement likes.
+
+Implement reposts.
+
+Implement comments.
+
+Implement full CRUD for user-owned posts/comments.
+
+Require valid GitHub repository URLs.
+
+Show GitHub stars, forks, update date, release information, license, language, and other useful metadata.
+
+Integrate all provided source ecosystems through native source adapters.
+
+Do not use fake data in production.
+
+Do not expose secrets.
+
+Do not bypass Android security.
+
+Do not silently install software.
+
+Do not silently grant permissions.
+
+Do not silently enable root operations.
+
+Respect Android's security and user-consent model.
+
+Optimize for thousands and eventually tens of thousands of applications.
+
+Use cache-first architecture.
+
+Make the store usable offline.
+
+Synchronize in the background.
+
+Do not block startup.
+
+Generate APK through GitHub Actions.
+
+Generate release artifacts.
+
+Run tests.
+
+Run lint.
+
+Validate catalogs.
+
+Document everything.
+
+At the end, provide:
+
+1. Complete implementation
+2. Build instructions
+3. APK generation instructions
+4. GitHub Actions workflow
+5. Environment variables/secrets required
+6. Catalog schema
+7. Backend setup
+8. Admin workflow
+9. Shizuku setup
+10. Root setup
+11. Installer architecture
+12. Testing instructions
+13. Security documentation
+14. Known Android limitations
+15. Future roadmap
+
+The final result should feel like a real Android application store designed for both normal Android users and advanced Shizuku/root users—not a simple APK downloader.
