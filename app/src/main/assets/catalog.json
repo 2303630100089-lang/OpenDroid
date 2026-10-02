@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-10-02T00:00:00Z",
+  "apps": [
+    {
+      "packageName": "moe.shizuku.privileged.api",
+      "name": "Shizuku",
+      "summary": "Use system APIs directly from user apps.",
+      "description": "Shizuku bridges regular apps with privileged Android APIs using ADB or root startup workflows.",
+      "iconUrl": "https://raw.githubusercontent.com/RikkaApps/Shizuku/master/graphics/icon.png",
+      "categories": ["Shizuku", "System", "Tools"],
+      "source": "GitHub",
+      "latestVersion": "13.5.4",
+      "downloadUrl": "https://github.com/RikkaApps/Shizuku/releases",
+      "projectUrl": "https://github.com/RikkaApps/Shizuku",
+      "supportsShizuku": false,
+      "supportsRoot": false,
+      "isBeta": false
+    },
+    {
+      "packageName": "com.machiav3lli.fdroid",
+      "name": "Neo Store",
+      "summary": "F-Droid client with modern UI.",
+      "description": "Neo Store provides browsing and installing open-source Android apps from F-Droid repositories.",
+      "iconUrl": "https://f-droid.org/repo/com.machiav3lli.fdroid/en-US/icon_4f8fDzvW2C9.png",
+      "categories": ["Store", "OpenSource", "F-Droid"],
+      "source": "F-Droid",
+      "latestVersion": "0.9.8",
+      "downloadUrl": "https://f-droid.org/packages/com.machiav3lli.fdroid/",
+      "projectUrl": "https://github.com/NeoApplications/Neo-Store",
+      "supportsShizuku": false,
+      "supportsRoot": false,
+      "isBeta": false
+    },
+    {
+      "packageName": "in.sunilpaulmathew.izzyondroid",
+      "name": "IzzyOnDroid",
+      "summary": "Companion app directory for IzzyOnDroid repo.",
+      "description": "Browse curated open-source Android apps commonly distributed through IzzyOnDroid.",
+      "iconUrl": "https://f-droid.org/repo/in.sunilpaulmathew.izzyondroid/en-US/icon_GB8gY8VUAA.png",
+      "categories": ["Store", "Repository", "OpenSource"],
+      "source": "F-Droid",
+      "latestVersion": "2.4",
+      "downloadUrl": "https://f-droid.org/en/packages/in.sunilpaulmathew.izzyondroid/",
+      "projectUrl": "https://gitlab.com/sunilpaulmathew/izzyondroid",
+      "supportsShizuku": false,
+      "supportsRoot": false,
+      "isBeta": false
+    }
+  ]
+}
