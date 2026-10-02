@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -38,11 +39,16 @@ fun SearchScreen(
         OutlinedTextField(
             value = query,
             onValueChange = { query = it },
-            modifier = Modifier.padding(bottom = 12.dp),
-            label = { Text("Search apps") }
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 12.dp),
+            label = { Text("Search apps") },
+            singleLine = true
         )
-        if (apps.isEmpty()) {
-            Text("No apps found", style = MaterialTheme.typography.bodyMedium)
+        if (query.isBlank()) {
+            Text("Type an app name or package to search", style = MaterialTheme.typography.bodyMedium)
+        } else if (apps.isEmpty()) {
+            Text("No apps found for \"$query\"", style = MaterialTheme.typography.bodyMedium)
         }
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(apps) { app ->
